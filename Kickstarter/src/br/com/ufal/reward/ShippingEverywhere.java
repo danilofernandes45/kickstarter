@@ -3,7 +3,7 @@ package br.com.ufal.reward;
 public class ShippingEverywhere implements Shipping{
 
 	public String toString() {
-		return "Shipping available to everywhere";
+		return "Entrega disponivel para todo o mundo";
 	}
 	
 }

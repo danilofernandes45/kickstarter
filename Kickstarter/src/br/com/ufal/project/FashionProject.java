@@ -1,5 +1,5 @@
 package br.com.ufal.project;
 
-public class FashionProject {
+public class FashionProject extends Project{
 
 }

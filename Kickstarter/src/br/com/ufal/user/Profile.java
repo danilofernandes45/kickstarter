@@ -10,6 +10,10 @@ public class Profile {
 	private String website;
 	private String idGoogleAnalytics;
 	
+	public Profile(String name) {
+		this.name = name;
+	}
+	
 	public Profile(String name, Location location) {
 		this.name = name;
 		this.location = location;

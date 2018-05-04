@@ -62,6 +62,30 @@ public class Reward {
 		this.limit = limit;
 	}
 	
+	public void increaseBanckerAmount(){
+		limit.increaseBanckerAmount();
+	}
+	
+	public String toString(){
+		
+		return "Titulo: "+title+"\n" +
+				"Valor mínimo de doaçao: "+valueDonation+"\n" +
+				"Descricao: \n"+description+"\n" +
+				"Data estimada para entrega: "+estimatedDelivery+"\n" +
+				"Disponibilidade:\n"+getAvailablity()+"\n";
+		
+	}
+	private String getAvailablity() {
+		
+		if(limit.isAvailable()){
+			
+			return limit.toString()+"\n"+shippingDetails;
+			
+		}
+		
+		return limit.toString();
+		
+	}
 		
 	
 }

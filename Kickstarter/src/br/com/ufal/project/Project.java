@@ -11,6 +11,7 @@ import br.com.ufal.pledge.Pledge;
 
 public class Project {
 
+	protected float totalValuePledges;
 	protected String shortBlurb;
 	protected String country;
 	protected String title;
@@ -24,6 +25,13 @@ public class Project {
 	protected ArrayList<Pledge> pledges;
 	protected ArrayList<Reward> rewards;
 	
+	
+	public Project(){
+		totalValuePledges = 0;
+		colaborators = new ArrayList<>();
+		pledges = new ArrayList<>();
+		rewards = new ArrayList<>();
+	}
 	
 	public Project copy(Project p) {
 		
@@ -102,12 +110,23 @@ public class Project {
 	public ArrayList<User> getColaborators() {
 		return colaborators;
 	}
+	
+	public void addColaborator(User user){
+		colaborators.add(user);
+	}
+	
 	public void setColaborators(ArrayList<User> colaborators) {
 		this.colaborators = colaborators;
 	}
 	public ArrayList<Pledge> getPledges() {
 		return pledges;
 	}
+	
+	public void addPledge(Pledge pledge){
+		pledges.add(pledge);
+		totalValuePledges += pledge.getValue();
+	}
+	
 	public void setPledges(ArrayList<Pledge> pledges) {
 		this.pledges = pledges;
 	}
@@ -118,6 +137,20 @@ public class Project {
 		this.rewards = rewards;
 	}
 	
+	public float getTotalValuePledges() {
+		return totalValuePledges;
+	}
 	
+	public String toString(){
+		
+		return "Titulo: "+title+"\n" +
+				"Criador: "+creator.getProfile().getName()+"\n" +
+				"Valor total das doacoes:"+getTotalValuePledges()+"\n" +
+				"Meta: "+fundingGoal+" [Na moeda vigente em "+location.getCountry()+"]\n" +
+				"Quantidade de doacoes: "+pledges.size()+"\n" +
+				"Descricao: \n"+description+"\n\n";
+		
+	}
+
 
 }

@@ -1,19 +1,30 @@
 package br.com.ufal.user;
 
+import java.util.ArrayList;
 import java.util.Date;
 
+import br.com.ufal.project.Project;
 import br.com.ufal.util.Address;
 
 public class User {
 
 	private Profile profile;
 	private String email;
-	private String passaword;
+	private String password;
 	private String firstName;
 	private String lastName;
 	private Date dateBirth;
 	private Address address;
 	private BankAccount bankAccount;
+	private ArrayList<Project> projects;
+	
+	public User(Profile profile, String email, String password) {
+
+		this.email = email;
+		this.profile = profile;
+		this.password = password;
+		projects = new ArrayList<>();
+	}
 	
 	public User(String email, String firstName, String lastName, Date dateBirth, Address address) {
 
@@ -22,6 +33,8 @@ public class User {
 		this.lastName = lastName;
 		this.dateBirth = dateBirth;
 		this.address = address;
+		projects = new ArrayList<>();
+
 	}
 
 	public User(Profile profile, String email, String firstName,
@@ -35,8 +48,18 @@ public class User {
 		this.dateBirth = dateBirth;
 		this.address = address;
 		this.bankAccount = bankAccount;
+		projects = new ArrayList<>();
+
 	}
 
+	public void addProject(Project project){
+		projects.add(project);
+	}
+	
+	public ArrayList<Project> getProjects(){
+		return projects;
+	}
+	
 	public Profile getProfile() {
 		return profile;
 	}
@@ -53,12 +76,12 @@ public class User {
 		this.email = email;
 	}
 	
-	public String getPassaword() {
-		return passaword;
+	public String getPassword() {
+		return password;
 	}
 
-	public void setPassaword(String passaword) {
-		this.passaword = passaword;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getFirstName() {

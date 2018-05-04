@@ -25,7 +25,7 @@ public class ShippingEspecificCountries implements Shipping{
 
 	public String toString(){
 		
-		String str = "Shipping available to: ";
+		String str = "Entrega disponivel para: ";
 		return ( str.concat(String.join(", ", countries)));
 		
 	}
