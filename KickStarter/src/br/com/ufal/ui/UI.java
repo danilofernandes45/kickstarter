@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.Scanner;
 
 import br.com.ufal.database.Database;
-import br.com.ufal.exception.TimerException;
 import br.com.ufal.pledge.Pledge;
 import br.com.ufal.project.*;
 import br.com.ufal.reward.*;
@@ -53,7 +52,7 @@ public class UI {
 				   "0. Fechar");
 		int option = -1;
 		try{
-			option = Integer.valueOf(input.next());
+			option = Integer.valueOf(input.nextLine());
 			
 			switch(option){
 			
@@ -93,7 +92,7 @@ public class UI {
 				   "0. Fechar");
 		int option = -1;
 		try{
-			option = Integer.valueOf(input.next());
+			option = Integer.valueOf(input.nextLine());
 			
 			switch(option){
 			
@@ -137,22 +136,22 @@ public class UI {
 		}
 		
 		try {
-			int cod = 0;
+			int id = 0;
 			do {
 				System.out.println("Digite o codigo do projeto: ");
-				cod = Integer.valueOf(input.next());
-			}while(cod < 0 || cod >= projects.size());
+				id = Integer.valueOf(input.nextLine());
+			}while(id < 0 || id >= projects.size());
 			
-			System.out.println(projects.get(cod));
+			System.out.println(projects.get(id));
 			
 			System.out.println("Editar?\n"
 							 + "1. Sim\n"
 							 + "2. Nao");
 			
-			cod = Integer.valueOf(input.next());
+			int cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
-				editProject(projects.get(cod));
+				editProject(projects.get(id));
 			}
 			
 		}catch(NumberFormatException e) {
@@ -172,7 +171,7 @@ public class UI {
 				System.out.println("Deseja excluir o projeto?\n"
 								 + "1. Sim\n"
 								 + "2. Nao");
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 				
 				if(cod == 1) {
 					deleteProject(project);
@@ -182,10 +181,10 @@ public class UI {
 				
 			} else {
 				
-				System.out.println("Deseja excluir o projeto?\n"
+				System.out.println("Deseja deixar o projeto?\n"
 								 + "1. Sim\n"
 								 + "2. Nao");
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 				
 				if(cod == 1) {
 					leaveTheProject(project);
@@ -197,29 +196,35 @@ public class UI {
 			
 			System.out.println("Editar categoria?\n"
 							 + "1. Sim\n"
-							 + "2.Nao");
-			cod = Integer.valueOf(input.next());
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				project = changeCategory(project);
 			}
 			
-			System.out.println("Editar titulo?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar titulo?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				project.setTitle( input.nextLine());
 			}
 			
-			System.out.println("Editar sinopse?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar sinopse?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				project.setShortBlurb( input.nextLine());
 			}
 			
-			System.out.println("Editar localizacao?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar localizacao?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				Location location = project.getLocation();
@@ -229,43 +234,55 @@ public class UI {
 				location.setCity( input.nextLine());
 			}
 			
-			System.out.println("Editar a quantidade em dinheiro a ser arrecadada?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar a quantidade em dinheiro a ser arrecadada?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
-				project.setFundingGoal( Float.valueOf(input.next()));
+				project.setFundingGoal( Float.valueOf(input.nextLine()));
 			}
 			
-			System.out.println("Editar descricao detalhada do projeto?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar descricao detalhada do projeto?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				project.setDescription( input.nextLine());
 			}
 			
-			System.out.println("Editar a descricao dos riscos e desafios do projeto?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar a descricao dos riscos e desafios do projeto?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				project.setDescripRisksChallenges( input.nextLine());
 			}
 			
-			System.out.println("Editar o periodo disponivel para doacao?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar o periodo disponivel para doacao?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				editFundingDurationProject(project);
 			}
 			
-			System.out.println("Adicionar colaborador?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Adicionar colaborador?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				addColaboratorProject(project);
 			}
 			
-			System.out.println("Editar recompensas?\n1. Sim\n 2. Nao");
-			cod = Integer.valueOf(input.next());
+			System.out.println("Editar recompensas?\n"
+							 + "1. Sim\n"
+							 + "2. Nao");
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				editRewardsProject(project);
@@ -290,7 +307,7 @@ public class UI {
 				if( thereAreRewards )
 					System.out.println("2. Editar recompensa");
 				
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 			
 			}while(cod != 1 && (cod != 2 || !thereAreRewards));
 			
@@ -320,7 +337,7 @@ public class UI {
 			System.out.println("Editar titulo?\n"
 							 + "1. Sim\n"
 							 + "2. Nao");
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				reward.setTitle( input.nextLine() );
@@ -329,7 +346,7 @@ public class UI {
 			System.out.println("Editar descricao?\n"
 							 + "1. Sim\n"
 							 + "2. Nao");
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				reward.setDescription( input.nextLine() );
@@ -338,16 +355,16 @@ public class UI {
 			System.out.println("Editar valor minimo de doacao?\n"
 							 + "1. Sim\n"
 							 + "2. Nao");
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
-				reward.setValueDonation( Float.valueOf(input.next()) );
+				reward.setValueDonation( Float.valueOf(input.nextLine()) );
 			}
 			
 			System.out.println("Editar detalhes de entrega?\n"
 							 + "1. Sim\n"
 							 + "2. Nao");
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				reward.setShippingDetails(editShippingDetails());
@@ -356,7 +373,7 @@ public class UI {
 			System.out.println("Editar Data estimada para o envio da recompensa?\n"
 							 + "1. Sim\n"
 							 + "2. Nao");
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				reward.setEstimatedDelivery(editDate());
@@ -365,7 +382,7 @@ public class UI {
 			System.out.println("Editar limite de disponibilidade?\n"
 							 + "1. Sim\n"
 							 + "2. Nao");
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 			
 			if(cod == 1) {
 				reward.setLimit(editLimitAvailable());
@@ -388,7 +405,7 @@ public class UI {
 			System.out.println("Descricao:");
 			reward.setDescription( input.nextLine() );
 			System.out.println("Valor minimo de doacao para receber essa recompensa:");
-			reward.setValueDonation( Float.valueOf(input.next()) );
+			reward.setValueDonation( Float.valueOf(input.nextLine()) );
 			
 			reward.setShippingDetails(editShippingDetails());
 			
@@ -409,7 +426,7 @@ public class UI {
 		
 		System.out.println("Limite de disponibilidade\n"
 						 + "Quantidade disponivel:");
-		int banckerLimit = Integer.valueOf(input.next());
+		int banckerLimit = Integer.valueOf(input.nextLine());
 		
 		System.out.println("Data de inicio");
 		Date timeStart = editDate();
@@ -426,10 +443,22 @@ public class UI {
 		
 		do {
 			System.out.println("Digite no formato dd-mm-aaaa:");
-			date = TimerTime.convertDateString( input.next() );
+			date = TimerTime.convertDateString( input.nextLine() );
 		}while(date == null);
 		
 		return date;
+	}
+	
+	private long editTime() {
+		
+		long time = -1;
+		
+		do {
+			System.out.println("Digite no formato hh:mm:ss :");
+			time = TimerTime.convertTimeString( input.nextLine() );
+		}while(time == -1);
+		
+		return time;
 	}
 	
 	private Shipping editShippingDetails() throws NumberFormatException{
@@ -441,7 +470,7 @@ public class UI {
 						     + "2. Entrega em todo o mundo\n"
 						     + "3. Entrega em paises especificos");
 			
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 			
 		}while(cod < 1 && cod > 3);
 		
@@ -461,7 +490,7 @@ public class UI {
 				
 				System.out.println("1. Adicionar outro pais\n"
 								 + "2. Concluir");
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 				
 			}while(cod == 1);
 			
@@ -476,7 +505,7 @@ public class UI {
 
 		
 		System.out.println("Email do colaborador:");
-		User user = database.searchUserByEmail( input.next() );
+		User user = database.searchUserByEmail( input.nextLine() );
 	
 		if(user == null){
 			System.out.println("Usuario não encontrado!");
@@ -514,22 +543,20 @@ public class UI {
 			do {
 				System.out.println("1. Numero de dias restantes\n"
 								 + "2. Instante [Data e Hora]");
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 			
 			}while(cod != 1 && cod != 2);
 			
 			if(cod == 1) {
 				
-				int amountDays = input.nextInt();
+				int amountDays = Integer.valueOf( input.nextLine() );
 				timer = new TimerDays(new Date(), amountDays);
 				
 			}else {
 	
-				System.out.println("Data no formato DD-MM-AAAA :");
-				String date = input.next();
+				Date date = editDate();
 				
-				System.out.println("Hora no formato HH:MM:SS");
-				String time = input.next();
+				long time = editTime();
 				
 				timer = new TimerTime(date, time);
 				
@@ -542,9 +569,6 @@ public class UI {
 		}
 		catch(NumberFormatException e) {
 			System.out.println("Entrada invalida");
-		}
-		catch(TimerException e) {
-			System.out.println("Data/hora invalido");
 		}
 		
 	}
@@ -571,7 +595,7 @@ public class UI {
 				
 				System.out.println("1. Editar informacoes pessoais\n"
 								 + "2. Editar informacoes bancarias");
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 			}
 			
 			if(cod == 1)
@@ -604,9 +628,9 @@ public class UI {
 		Address address = profile.getAddress();
 		
 		System.out.println("Primeiro nome:");
-		profile.setFirstName( input.next());
+		profile.setFirstName( input.nextLine());
 		System.out.println("Ultimo nome:");
-		profile.setLastName( input.next());
+		profile.setLastName( input.nextLine());
 		
 		System.out.println("Endereco\n\n"
 						 + "Pais:");
@@ -640,16 +664,16 @@ public class UI {
 		String email;
 		do {
 			System.out.println("Email:");
-			email = input.next();
+			email = input.nextLine();
 		}while(isUnavailable(email));
 		
 		userLogged.setEmail(email);
 		
 		System.out.println("Senha:");
-		userLogged.setPassword( input.next() );
+		userLogged.setPassword( input.nextLine() );
 		
 		System.out.println("Name: ");
-		userLogged.setName( input.next() );
+		userLogged.setName( input.nextLine() );
 		
 		Location location = userLogged.getLocation();
 		System.out.println("Localizacao\nPais:");
@@ -693,9 +717,9 @@ public class UI {
 		do{
 			
 			System.out.println("Email:");
-			email = input.next();
+			email = input.nextLine();
 			System.out.println("Confirmar email:");
-			email2 = input.next();
+			email2 = input.nextLine();
 			
 			if(!email.equals(email2) || email.equals("")){
 				System.out.println("Emails inconsistentes");
@@ -713,9 +737,9 @@ public class UI {
 		do{
 		
 			System.out.println("Senha:");
-			passwd = input.next();
+			passwd = input.nextLine();
 			System.out.println("Confirmar senha:");
-			passwd2 = input.next();
+			passwd2 = input.nextLine();
 			
 			if(!email.equals(email2))
 				System.out.println("Senhas distintas");
@@ -737,11 +761,11 @@ public class UI {
 	private void login() {
 		
 		int count = 0;
-		while(userLogged == null && count<3) {
+		while(userLogged == null && count<2) {
 			System.out.println("Email:");
-			String email = input.next();
+			String email = input.nextLine();
 			System.out.println("Senha:");
-			String passwd = input.next();
+			String passwd = input.nextLine();
 			
 			User user = database.searchUserByEmail(email);
 			
@@ -762,6 +786,9 @@ public class UI {
 			
 			Project project = selectCategory();
 			
+			System.out.println("Titulo: ");
+			project.setTitle( input.nextLine() );
+			
 			System.out.println("Sinopse: ");
 			project.setShortBlurb( input.nextLine() );
 			
@@ -775,7 +802,7 @@ public class UI {
 									"1. Realizar login\n" +
 									"2. Criar conta");
 				do{
-					cod = Integer.valueOf(input.next());
+					cod = Integer.valueOf(input.nextLine());
 				}while(cod !=2 && cod!=1);
 				
 				if(cod == 1)
@@ -796,7 +823,7 @@ public class UI {
 		
 	}
 	
-	private Project selectCategory() {
+	private Project selectCategory() throws NumberFormatException{
 		
 		String[] categories = {"Art", "Comics", "Crafts", "Dance", "Design", "Fashion", "Film/Video", "Food", "Game", "Journalism", "Music", "Photography", "Publishing", "Technology", "Theater"};
 		Project[] projCat = {new ArtProject(), new ComicsProject(), new CraftsProject(), new DanceProject(), new DesignProject(), new FashionProject(), new FilmVideoProject(), new FoodProject(), new GameProject(), new JournalismProject(), new MusicProject(), new PhotographyProject(), new PublishingProject(), new TechnologyProject(), new TheaterProject()};
@@ -808,7 +835,7 @@ public class UI {
 		
 		int cod;
 		do{
-			cod = Integer.valueOf(input.next());
+			cod = Integer.valueOf(input.nextLine());
 		}while(cod <0 || cod>=15);
 		
 		return projCat[cod];
@@ -816,7 +843,7 @@ public class UI {
 		
 	}
 	
-	private void searchProject() {
+	private void searchProject(){
 		
 		System.out.println("Titulo do projeto:");
 		String title = input.nextLine();
@@ -843,7 +870,7 @@ public class UI {
 			
 			int cod = -1;
 			do {
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 			}while(cod < 0 || cod >= result.size());
 			
 			showProject(result.get(cod));
@@ -865,7 +892,7 @@ public class UI {
 			
 			int cod = -1;
 			do {
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 			}while(cod != 1 && cod != 2);
 			
 			if(cod == 1) {
@@ -888,19 +915,19 @@ public class UI {
 		
 			do{
 				System.out.println("Valor da doacao [Valor minimo: "+minimalValue+"]:");
-				value = Float.valueOf(input.next());
+				value = Float.valueOf(input.nextLine());
 			}while(value < minimalValue);
 			
 			System.out.println("Numero do cartao: ");
-			String cardNumber = input.next();
+			String cardNumber = input.nextLine();
 			System.out.println("Nome do titular: ");
 			String cardHolderName = input.nextLine();
 			System.out.println("Mes de expiracao: ");
-			int monthEx = Integer.valueOf(input.next());
+			int monthEx = Integer.valueOf(input.nextLine());
 			System.out.println("ano de expiracao: ");
-			int yearEx = Integer.valueOf(input.next());
+			int yearEx = Integer.valueOf(input.nextLine());
 			System.out.println("Senha: ");
-			String securityCode = input.next();
+			String securityCode = input.nextLine();
 				
 			Pledge pledge = new Pledge(value, cardNumber, cardHolderName, monthEx, yearEx, securityCode);
 			
@@ -939,7 +966,7 @@ public class UI {
 			
 			int cod = -1;
 			do {
-				cod = Integer.valueOf(input.next());
+				cod = Integer.valueOf(input.nextLine());
 			}while(cod < 0 || cod > rewards.size() || (!isPledge && cod == 0));
 			
 			if(cod != 0){

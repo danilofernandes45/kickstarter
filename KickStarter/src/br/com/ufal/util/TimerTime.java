@@ -12,14 +12,11 @@ public class TimerTime implements Timer{
 	private static final int MILLISSECONDS_PER_HOUR = 3600*MILLISSECONDS;
 	private static final int MILLISSECONDS_PER_MIN = 60*MILLISSECONDS;
 	private Date endTime;
-
-	public TimerTime() {
-		endTime = new Date();
-	}
 	
-	public TimerTime(String date, String time) throws TimerException{	
-		set(date, time);
+	public TimerTime(Date date, long time){	
+		endTime = new Date( date.getTime() + time );
 	}
+
 	public void set(String date, String time) throws TimerException{
 		
 		set(date);	
